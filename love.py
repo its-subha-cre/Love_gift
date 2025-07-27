@@ -219,18 +219,9 @@ folium.Marker([22.5006, 88.3598], popup="South City Mall 🛍️", tooltip="Sout
 folium.Marker([22.5647, 88.3387], popup="Ganga Ghat 🌊", tooltip="Ganga Ghat",
               icon=folium.Icon(color="cadetblue", icon="tint")).add_to(m)
 
-# Render map cleanly (avoid st_folium due to white space issue)
-map_html = m._repr_html_()
-components.html(map_html, height=750)  # Adjust height to fit nicely
+# ✅ Use st_folium for responsive and correct layout handling
+st_folium(m, use_container_width=True, height=550)
 
-# Remove extra white space under the map
-st.markdown("""
-    <style>
-        iframe {
-            margin-bottom: -40px !important;
-        }
-    </style>
-""", unsafe_allow_html=True)
 # Add optional content to fill space & make it feel complete
 st.markdown("---")
 st.markdown("📸 Stay tuned for more memories and adventures...")
