@@ -204,43 +204,24 @@ st.subheader("🗺️ Places We've Been")
 m = folium.Map(location=[22.54, 88.35], zoom_start=13, control_scale=True)
 
 # Add markers
-folium.Marker(
-    [22.5448, 88.3426],
-    popup="Victoria Memorial 🌸",
-    tooltip="Victoria Memorial",
-    icon=folium.Icon(color="red", icon="heart")
-).add_to(m)
+folium.Marker([22.5448, 88.3426], popup="Victoria Memorial 🌸", tooltip="Victoria Memorial",
+              icon=folium.Icon(color="red", icon="heart")).add_to(m)
 
-folium.Marker(
-    [22.5284, 88.3340],
-    popup="Botanical Garden 🌿",
-    tooltip="Botanical Garden",
-    icon=folium.Icon(color="green", icon="leaf")
-).add_to(m)
+folium.Marker([22.5284, 88.3340], popup="Botanical Garden 🌿", tooltip="Botanical Garden",
+              icon=folium.Icon(color="green", icon="leaf")).add_to(m)
 
-folium.Marker(
-    [22.5121, 88.3637],
-    popup="Rabindra Sarobar 🌅",
-    tooltip="Rabindra Sarobar",
-    icon=folium.Icon(color="purple", icon="star")
-).add_to(m)
+folium.Marker([22.5121, 88.3637], popup="Rabindra Sarobar 🌅", tooltip="Rabindra Sarobar",
+              icon=folium.Icon(color="purple", icon="star")).add_to(m)
 
-folium.Marker(
-    [22.5006, 88.3598],
-    popup="South City Mall 🛍️",
-    tooltip="South City Mall",
-    icon=folium.Icon(color="blue", icon="shopping-cart")
-).add_to(m)
+folium.Marker([22.5006, 88.3598], popup="South City Mall 🛍️", tooltip="South City Mall",
+              icon=folium.Icon(color="blue", icon="shopping-cart")).add_to(m)
 
-folium.Marker(
-    [22.5647, 88.3387],
-    popup="Ganga Ghat 🌊",
-    tooltip="Ganga Ghat",
-    icon=folium.Icon(color="cadetblue", icon="tint")
-).add_to(m)
+folium.Marker([22.5647, 88.3387], popup="Ganga Ghat 🌊", tooltip="Ganga Ghat",
+              icon=folium.Icon(color="cadetblue", icon="tint")).add_to(m)
 
-# 🔥 Full-width and full-height map rendering (no white space!)
-st_folium(m, use_container_width=True, height=800)
+# Render the map properly with full height
+map_html = m._repr_html_()  # Render folium map as raw HTML
+components.html(map_html, height=900) 
 
 # Add optional content to fill space & make it feel complete
 st.markdown("---")
