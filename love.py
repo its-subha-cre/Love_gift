@@ -195,15 +195,19 @@ if encoded_images:
 
 
 # Map of Places
+
+
+
+# Create folium map centered around Kolkata
+
+# Create folium map centered around Kolkata
+# Map Section
 st.subheader("🗺️ Places We've Been")
 
-
-# Create folium map centered around Kolkata
-
-# Create folium map centered around Kolkata
+# Create and populate the map
 m = folium.Map(location=[22.54, 88.35], zoom_start=13, control_scale=True)
 
-# Add markers
+# Add your markers
 folium.Marker([22.5448, 88.3426], popup="Victoria Memorial 🌸", tooltip="Victoria Memorial",
               icon=folium.Icon(color="red", icon="heart")).add_to(m)
 
@@ -219,11 +223,30 @@ folium.Marker([22.5006, 88.3598], popup="South City Mall 🛍️", tooltip="Sout
 folium.Marker([22.5647, 88.3387], popup="Ganga Ghat 🌊", tooltip="Ganga Ghat",
               icon=folium.Icon(color="cadetblue", icon="tint")).add_to(m)
 
-# ✅ Use st_folium for responsive and correct layout handling
-st_folium(m, use_container_width=True, height=550)
+# Display the map with proper height
+with st.container():
+    st_folium(m, use_container_width=True, height=700)
+
+# Mobile height fix
+st.markdown("""
+<style>
+/* Ensure iframe height on all devices */
+iframe[title="streamlit_folium.st_folium"] {
+    height: 700px !important;
+    width: 100% !important;
+    border: none;
+}
+@media only screen and (max-width: 600px) {
+    iframe[title="streamlit_folium.st_folium"] {
+        height: 600px !important;
+    }
+}
+</style>
+""", unsafe_allow_html=True)
+
 
 # Add optional content to fill space & make it feel complete
-st.markdown("---")
+
 st.markdown("📸 Stay tuned for more memories and adventures...")
 
 # Optional: Reduce default Streamlit padding
